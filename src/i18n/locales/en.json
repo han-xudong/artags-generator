@@ -1,0 +1,53 @@
+{
+    "app": {
+      "title": "Aruco & AprilTag Generator",
+      "description": "Generate, customize and export Aruco and AprilTag markers online",
+      "link": "https://han-xudong.github.io/artags-generator",
+      "sourceCodeURL": "https://github.com/han-xudong/artags-generator"
+    },
+    "header": {
+      "title": "Tag Generator",
+      "github": "GitHub"
+    },
+    "footer": {
+      "copyright": "© {{year}} Aruco & AprilTag Tag Generator",
+      "viewSource": "View source code on GitHub"
+    },
+    "controls": {
+      "title": "Tag Parameters",
+      "tagType": {
+        "aruco": "Aruco Tag",
+        "apriltag": "AprilTag"
+      },
+      "dictionary": "Aruco Dictionary",
+      "tagFamily": "AprilTag Family",
+      "tagID": "Tag ID",
+      "tagSize": "Tag Size (mm)",
+      "margin": "Margin (mm)"
+    },
+    "preview": {
+      "arucoTitle": "Aruco Tag Preview",
+      "apriltagTitle": "AprilTag Preview",
+      "dictionary": "Dictionary",
+      "family": "Family",
+      "id": "ID",
+      "size": "Size"
+    },
+    "export": {
+      "title": "Export Options",
+      "description": "Choose a format to export the current tag",
+      "svg": "Export SVG",
+      "pdf": "Export PDF",
+      "png": "Export PNG",
+      "hint": "SVG is ideal for vector editing, PDF for printing, PNG for web use"
+    },
+    "language": {
+      "en": "English",
+      "zh": "中文"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark"
+    }
+  }
+  

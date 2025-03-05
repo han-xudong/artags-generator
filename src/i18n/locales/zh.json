@@ -1,0 +1,53 @@
+{
+    "app": {
+      "title": "Aruco 和 AprilTag 标签生成器",
+      "description": "在线生成、自定义和导出 Aruco 和 AprilTag 标记标签",
+      "link": "https://han-xudong.github.io/artags-generator",
+      "sourceCodeURL": "https://github.com/han-xudong/artags-generator"
+    },
+    "header": {
+      "title": "标签生成器",
+      "github": "GitHub"
+    },
+    "footer": {
+      "copyright": "© {{year}} Aruco 和 AprilTag 标签生成器",
+      "viewSource": "在GitHub上查看源代码"
+    },
+    "controls": {
+      "title": "标签参数",
+      "tagType": {
+        "aruco": "Aruco标签",
+        "apriltag": "AprilTag标签"
+      },
+      "dictionary": "Aruco字典",
+      "tagFamily": "AprilTag家族",
+      "tagID": "标签ID",
+      "tagSize": "标签尺寸 (mm)",
+      "margin": "边距 (mm)"
+    },
+    "preview": {
+      "arucoTitle": "Aruco 标签预览",
+      "apriltagTitle": "AprilTag 标签预览",
+      "dictionary": "字典",
+      "family": "家族",
+      "id": "ID",
+      "size": "尺寸"
+    },
+    "export": {
+      "title": "导出选项",
+      "description": "选择一种格式导出当前标签",
+      "svg": "导出 SVG",
+      "pdf": "导出 PDF",
+      "png": "导出 PNG",
+      "hint": "SVG适合用于矢量图形编辑，PDF适合直接打印，PNG适合在网页中使用"
+    },
+    "language": {
+      "en": "English",
+      "zh": "中文"
+    },
+    "theme": {
+      "light": "浅色",
+      "dark": "深色"
+    }
+  }
+  
