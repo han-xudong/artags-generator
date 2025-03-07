@@ -13,7 +13,7 @@ export const loadDict = async () => {
   }
   
   try {
-    const response = await fetch('/dict.json');
+    const response = await fetch('dict.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
