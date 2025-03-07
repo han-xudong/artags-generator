@@ -1,31 +1,35 @@
-# .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
+name: Deploy Vite React App to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # 或你的默认分支
+
+permissions:
+  contents: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
-          
-      - name: Install Dependencies
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
         run: npm install
-        
-      - name: Build
+
+      - name: Build project
         run: npm run build
-        
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          branch: gh-pages
-          folder: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
