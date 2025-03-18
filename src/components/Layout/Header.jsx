@@ -35,7 +35,7 @@ function Header({ actualMode, toggleColorMode }) {
           <LanguageSwitcher />
           <IconButton
             color="inherit"
-            href={t("header.sourceCodeURL")}
+            href={t("app.sourceCodeURL")}
             target="_blank"
           >
             <GitHubIcon />

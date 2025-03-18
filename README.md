@@ -1,19 +1,24 @@
-# Aruco 和 AprilTag 标签生成器
+# ArUco and AprilTag Generator
 
-这是一个基于React和Vite构建的Web应用，用于在线生成、自定义和导出Aruco和AprilTag标记标签。
+A web application built with React and Vite for online generation, customization, and export of ArUco and AprilTag markers. Please open the [pages](https://han-xudong.github.io/artags-generator) and try it out!
 
-## 功能特点
+## Features
 
-- 支持生成Aruco和AprilTag两种标记
-- 可自定义标签类型、字典/家族、ID、尺寸等参数
-- 实时预览生成的标签
-- 导出格式：SVG、PDF和PNG
-- 响应式设计，适配各种设备
+- Support for both ArUco and AprilTag marker generation
+- Customizable tag parameters including type, dictionary/family, ID, size, and more
+- Real-time preview of generated tags
+- Multiple export formats: SVG, PDF, and PNG
+- Responsive design for all devices
 
-## 技术栈
+## Tech Stack
 
-- 前端框架：React 18
-- 构建工具：Vite
-- UI库：Material-UI (MUI)
-- 状态管理：Zustand
-- 导出功能：jsPDF、html-to-image、file-saver
+- Frontend Framework: React 18
+- Build Tool: Vite
+- UI Library: Material-UI (MUI)
+- State Management: Zustand
+- Export Functionality: jsPDF, html-to-image, file-saver
+- Internationalization: i18next
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

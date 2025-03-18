@@ -1,33 +1,50 @@
-import React, { useEffect, useRef, useState } from "react";
+/**
+ * AprilTag Generator Component
+ * Renders and manages the generation of AprilTag markers based on user-selected parameters
+ * Handles loading states, error conditions, and image display
+ */
+import React, { useEffect, useState } from "react";
 import { Box, Paper, Typography, CircularProgress } from "@mui/material";
 import { useTagStore } from "../../store/tagStore";
-import { generateAprilTag } from "../../utils/tagGenerators";
+import { generateAprilTagSVG, svgToImageUrl } from "../../utils/svgTagGenerators";
 import { useTranslation } from "react-i18next";
 
+/**
+ * AprilTag Generator Component
+ * Creates and displays AprilTag markers with specified parameters
+ * @returns {JSX.Element} The rendered AprilTag generator component
+ */
 const AprilTagGenerator = () => {
   const { t } = useTranslation();
-  const canvasRef = useRef(null);
-  const { tagFamily, tagID, tagSize, margin, dpi } = useTagStore();
+  // Get tag parameters from global store
+  const { tagFamily, tagID, tagSize, margin } = useTagStore();
+  // Component state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [markerId, setMarkerId] = useState(tagID);
+  const [svgImage, setSvgImage] = useState(null);
 
+  // Mapping of tag families to dictionary keys
   const familyToDict = {
     tag16h5: "april_16h5",
     tag25h9: "april_25h9",
     tag36h11: "april_36h11",
   };
 
+  // Generate tag when parameters change
   useEffect(() => {
     let isMounted = true;
 
+    /**
+     * Generate AprilTag asynchronously
+     * Handles tag generation, error states, and cleanup
+     */
     const generateTag = async () => {
-      if (!canvasRef.current) return;
-
       try {
         setLoading(true);
         setError(null);
 
+        // Map tag family to dictionary key and validate tag ID
         const dictKey = familyToDict[tagFamily] || "april_36h11";
         let validId = tagID;
 
@@ -40,16 +57,21 @@ const AprilTagGenerator = () => {
           if (isMounted) setMarkerId(validId);
         }
 
-        await generateAprilTag(
-          canvasRef.current,
+        // Generate SVG tag
+        const svgElement = await generateAprilTagSVG(
           tagFamily,
           validId,
           tagSize,
-          dpi,
           margin
         );
+        
+        // Convert SVG to image URL
+        const imageUrl = svgToImageUrl(svgElement);
 
-        if (isMounted) setLoading(false);
+        if (isMounted) {
+          setSvgImage(imageUrl);
+          setLoading(false);
+        }
       } catch (err) {
         console.error("Error generating AprilTag:", err);
         if (isMounted) {
@@ -61,8 +83,13 @@ const AprilTagGenerator = () => {
 
     generateTag();
 
+    // Cleanup function to prevent memory leaks
     return () => {
       isMounted = false;
+      // Clean up image URL
+      if (svgImage) {
+        URL.revokeObjectURL(svgImage);
+      }
     };
   }, [tagFamily, tagID, tagSize, margin]);
 
@@ -108,27 +135,19 @@ const AprilTagGenerator = () => {
         {loading ? (
           <CircularProgress />
         ) : error ? (
-          <Typography color="error" align="center">
-            {error}
-          </Typography>
-        ) : null}
-
-        <canvas
-          ref={canvasRef}
-          className="preview-canvas"
-          style={{
-            border: "1px solid #e0e0e0",
-            maxHeight: "90%",
-            maxWidth: "90%",
-            objectFit: "contain",
-            display: loading || error ? "none" : "block",
-          }}
-        />
+          <Typography color="error">{error}</Typography>
+        ) : (
+          <img
+            src={svgImage}
+            alt={`AprilTag ${markerId}`}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+            }}
+          />
+        )}
       </Box>
-
-      <Typography variant="body2" color="text.secondary" textAlign="center">
-        {tagSize} x {tagSize} mm ({margin} mm margin)
-      </Typography>
     </Paper>
   );
 };

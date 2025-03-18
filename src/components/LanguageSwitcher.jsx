@@ -1,21 +1,42 @@
+/**
+ * Language Switcher Component
+ * Provides a dropdown menu for users to select their preferred language
+ * Uses i18next for internationalization and Material UI for the interface
+ */
 import React from 'react';
 import { Button, Menu, MenuItem, IconButton } from '@mui/material';
 import { Language as LanguageIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 
+/**
+ * LanguageSwitcher Component
+ * Renders a language selection dropdown with available language options
+ * @returns {JSX.Element} The rendered language switcher component
+ */
 const LanguageSwitcher = () => {
   const { i18n, t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   
+  /**
+   * Handle click on language button to open menu
+   * @param {React.MouseEvent} event - The click event
+   */
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   
+  /**
+   * Close the language menu
+   */
   const handleClose = () => {
     setAnchorEl(null);
   };
   
+  /**
+   * Change the application language
+   * @param {string} lng - The language code to switch to
+   */
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     handleClose();

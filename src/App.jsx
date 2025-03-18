@@ -1,4 +1,9 @@
 // src/App.jsx
+/**
+ * Main Application Component
+ * This is the root component of the application that sets up the theme provider,
+ * layout structure, and renders the appropriate tag generator based on user selection.
+ */
 import React, { Suspense } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Box, CircularProgress, Grid, useMediaQuery } from "@mui/material";
@@ -9,16 +14,21 @@ import ArucoGenerator from "./components/TagGenerator/ArucoGenerator";
 import AprilTagGenerator from "./components/TagGenerator/AprilTagGenerator";
 import ParameterControls from "./components/TagGenerator/ParameterControls";
 import ExportOptions from "./components/Export/ExportOptions";
-import { useTagStore} from "./store/tagStore";
+import { useTagStore } from "./store/tagStore";
 import { useColorMode } from "./hooks/useColorMode";
 
+/**
+ * App Component
+ * Handles theme configuration, responsive layout, and component rendering
+ * @returns {JSX.Element} The rendered application
+ */
 function App() {
   const { t } = useTranslation();
   const { tagType } = useTagStore();
   const { actualMode, toggleColorMode } = useColorMode();
   const isMobile = useMediaQuery("(max-width:600px)");
 
-
+  // Create theme based on current color mode
   const theme = React.useMemo(
     () =>
       createTheme({
@@ -76,7 +86,9 @@ function App() {
                 container
                 spacing={isMobile ? 2 : 3}
                 className="content-area"
-                sx={{ height: "100%" }}
+                sx={{
+                  height: "100%",
+                }}
               >
                 <Grid
                   item
@@ -86,13 +98,14 @@ function App() {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    mb: isMobile ? 2 : 0,
+                    mb: isMobile ? 1 : 0,
+                    height: "850px",
                   }}
                 >
                   <Box sx={{ flex: 1 }}>
                     <ParameterControls />
                   </Box>
-                  <Box sx={{ mt: 3 }}>
+                  <Box sx={{ mt: 0 }}>
                     <ExportOptions />
                   </Box>
                 </Grid>
@@ -104,7 +117,7 @@ function App() {
                   lg={8}
                   sx={{
                     display: "flex",
-                    minHeight: isMobile ? "350px" : "500px",
+                    minHeight: isMobile ? "350px" : "850px",
                   }}
                 >
                   <Box

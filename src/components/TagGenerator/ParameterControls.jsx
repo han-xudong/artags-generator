@@ -1,3 +1,8 @@
+/**
+ * Parameter Controls Component
+ * Provides UI controls for configuring tag generation parameters
+ * Allows users to select tag type, dictionary/family, ID, size, and margin
+ */
 import React from "react";
 import {
   Paper,
@@ -16,8 +21,14 @@ import {
 import { useTagStore } from "../../store/tagStore";
 import { useTranslation } from "react-i18next";
 
+/**
+ * Parameter Controls Component
+ * Renders a panel with controls for all tag generation parameters
+ * @returns {JSX.Element} The rendered parameter controls component
+ */
 const ParameterControls = () => {
   const { t } = useTranslation();
+  // Get tag parameters and setters from global store
   const {
     tagType,
     setTagType,
@@ -33,6 +44,7 @@ const ParameterControls = () => {
     setMargin,
   } = useTagStore();
 
+  // Available ArUco dictionaries with descriptive labels
   const arucoDictionaries = [
     { value: "DICT_4X4 (50, 100, 250, 1000)", label: "DICT_4X4_1000" },
     { value: "DICT_5X5 (50, 100, 250, 1000)", label: "DICT_5X5_1000" },
@@ -40,19 +52,28 @@ const ParameterControls = () => {
     { value: "DICT_7X7 (50, 100, 250, 1000)", label: "DICT_7X7_1000" },
   ];
 
+  // Available AprilTag families
   const tagFamilies = ["tag16h5", "tag25h9", "tag36h10", "tag36h11"];
 
+  /**
+   * Get maximum valid ID based on selected tag type and family
+   * @returns {number} Maximum valid tag ID
+   */
   const getMaxID = () => {
     if (tagType === "aruco") {
-      return 999; // 1000
+      return 999; // 1000 markers (0-999)
     } else {
       if (tagFamily === "tag16h5") return 29;
       if (tagFamily === "tag25h9") return 34;
       if (tagFamily === "tag36h10") return 2319;
-      return 586;
+      return 586; // tag36h11
     }
   };
 
+  /**
+   * Handle tag ID input changes with validation
+   * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+   */
   const handleIDChange = (e) => {
     const newID = parseInt(e.target.value, 10);
     if (isNaN(newID)) return;

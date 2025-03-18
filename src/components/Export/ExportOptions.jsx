@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Paper, Typography, Box, Grid} from "@mui/material";
 import {
   PictureAsPdf as PdfIcon,
@@ -7,12 +7,32 @@ import {
 } from "@mui/icons-material";
 import { useTagStore } from "../../store/tagStore";
 import { exportAsSVG, exportAsPDF, exportAsPNG } from "../../utils/exportHelpers";
+import { generateArucoTagSVG, generateAprilTagSVG } from "../../utils/svgTagGenerators";
 import { useTranslation } from "react-i18next";
 
 
 const ExportOptions = () => {
   const { t } = useTranslation();
   const { tagType, tagID, dictionary, tagFamily, tagSize, margin } = useTagStore();
+  const [svgElement, setSvgElement] = useState(null);
+  
+  useEffect(() => {
+    const generateSvg = async () => {
+      try {
+        if (tagType === "aruco") {
+          const svg = await generateArucoTagSVG(dictionary, tagID, tagSize, margin);
+          setSvgElement(svg);
+        } else {
+          const svg = await generateAprilTagSVG(tagFamily, tagID, tagSize, margin);
+          setSvgElement(svg);
+        }
+      } catch (error) {
+        console.error("Error generating SVG for export:", error);
+      }
+    };
+    
+    generateSvg();
+  }, [tagType, tagID, dictionary, tagFamily, tagSize, margin]);
 
   const getFilename = () => {
     if (tagType === "aruco") {
@@ -23,20 +43,22 @@ const ExportOptions = () => {
   };
 
   const handleExport = (format) => {
-    const canvas = document.querySelector("canvas");
-    if (!canvas) {
-      console.error("No canvas element found");
+    if (!svgElement) {
+      console.error("No SVG element available for export");
       return;
     }
 
     const filename = getFilename();
 
     if (format === "svg") {
-      exportAsSVG(canvas, filename, tagSize, margin);
+      // 直接导出SVG元素
+      exportAsSVG(svgElement, filename, tagSize, margin);
     } else if (format === "pdf") {
-      exportAsPDF(canvas, filename, tagSize, margin);
+      // 使用SVG元素导出PDF
+      exportAsPDF(svgElement, filename, tagSize, margin);
     } else if (format === "png") {
-      exportAsPNG(canvas, filename);
+      // 使用SVG元素导出PNG
+      exportAsPNG(svgElement, filename);
     }
   };
 
