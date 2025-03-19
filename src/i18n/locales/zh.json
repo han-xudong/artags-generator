@@ -3,7 +3,7 @@
       "title": "Aruco 和 AprilTag 标签生成器",
       "description": "在线生成、自定义和导出 Aruco 和 AprilTag 标记标签",
       "link": "https://han-xudong.github.io/artags-generator",
-      "sourceCodeURL": "https://github.com/han-xudong/artags-generator"
+      "sourceCodeURL": "https://github.com/han-xudong/tags-generator"
     },
     "header": {
       "title": "标签生成器",
