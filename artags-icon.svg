@@ -2,55 +2,31 @@
   <!-- 背景 -->
   <rect width="32" height="32" rx="4" fill="#FFFFFF"/>
   
-  <!-- ArUco风格的标记图案 -->
+  <!-- 简化后的ArUco风格标记图案 (4x4) -->
   <g>
     <!-- 第一行 -->
-    <rect x="4" y="4" width="4" height="4" fill="#000000"/>
-    <rect x="8" y="4" width="4" height="4" fill="#000000"/>
-    <rect x="12" y="4" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="16" y="4" width="4" height="4" fill="#000000"/>
-    <rect x="20" y="4" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="24" y="4" width="4" height="4" fill="#000000"/>
+    <rect x="4" y="4" width="6" height="6" fill="#000000"/>
+    <rect x="10" y="4" width="6" height="6" fill="#000000"/>
+    <rect x="16" y="4" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="22" y="4" width="6" height="6" fill="#000000"/>
     
     <!-- 第二行 -->
-    <rect x="4" y="8" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="8" y="8" width="4" height="4" fill="#000000"/>
-    <rect x="12" y="8" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="16" y="8" width="4" height="4" fill="#000000"/>
-    <rect x="20" y="8" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="24" y="8" width="4" height="4" fill="#000000"/>
+    <rect x="4" y="10" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="10" y="10" width="6" height="6" fill="#000000"/>
+    <rect x="16" y="10" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="22" y="10" width="6" height="6" fill="#000000"/>
     
     <!-- 第三行 -->
-    <rect x="4" y="12" width="4" height="4" fill="#000000"/>
-    <rect x="8" y="12" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="12" y="12" width="4" height="4" fill="#000000"/>
-    <rect x="16" y="12" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="20" y="12" width="4" height="4" fill="#000000"/>
-    <rect x="24" y="12" width="4" height="4" fill="#FFFFFF"/>
+    <rect x="4" y="16" width="6" height="6" fill="#000000"/>
+    <rect x="10" y="16" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="16" y="16" width="6" height="6" fill="#000000"/>
+    <rect x="22" y="16" width="6" height="6" fill="#FFFFFF"/>
     
     <!-- 第四行 -->
-    <rect x="4" y="16" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="8" y="16" width="4" height="4" fill="#000000"/>
-    <rect x="12" y="16" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="16" y="16" width="4" height="4" fill="#000000"/>
-    <rect x="20" y="16" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="24" y="16" width="4" height="4" fill="#000000"/>
-    
-    <!-- 第五行 -->
-    <rect x="4" y="20" width="4" height="4" fill="#000000"/>
-    <rect x="8" y="20" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="12" y="20" width="4" height="4" fill="#000000"/>
-    <rect x="16" y="20" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="20" y="20" width="4" height="4" fill="#000000"/>
-    <rect x="24" y="20" width="4" height="4" fill="#FFFFFF"/>
-    
-    <!-- 第六行 -->
-    <rect x="4" y="24" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="8" y="24" width="4" height="4" fill="#000000"/>
-    <rect x="12" y="24" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="16" y="24" width="4" height="4" fill="#000000"/>
-    <rect x="20" y="24" width="4" height="4" fill="#FFFFFF"/>
-    <rect x="24" y="24" width="4" height="4" fill="#000000"/>
+    <rect x="4" y="22" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="10" y="22" width="6" height="6" fill="#000000"/>
+    <rect x="16" y="22" width="6" height="6" fill="#FFFFFF"/>
+    <rect x="22" y="22" width="6" height="6" fill="#000000"/>
   </g>
   
   <!-- 边框 -->
