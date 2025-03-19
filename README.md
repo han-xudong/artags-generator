@@ -1,6 +1,6 @@
 # ArUco and AprilTag Generator
 
-A web application built with React and Vite for online generation, customization, and export of ArUco and AprilTag markers. Please open the [pages](https://han-xudong.github.io/artags-generator) and try it out!
+A web application built with React and Vite for online generation, customization, and export of ArUco and AprilTag markers. Please open the [pages](https://tagsgen.top) and try it out!
 
 ## Features
 
