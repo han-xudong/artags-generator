@@ -14,8 +14,8 @@ import { useMediaQuery } from "@mui/material";
 export function useColorMode() {
   // Detect system preference for dark mode
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  // State to track the current color mode
-  const [mode, setMode] = useState("light");
+  // State to track the current color mode - initialize with system preference
+  const [mode, setMode] = useState(prefersDarkMode ? "dark" : "light");
 
   // The actual mode to be used by the application
   const actualMode = mode;
@@ -25,8 +25,11 @@ export function useColorMode() {
     const savedMode = localStorage.getItem("colorMode");
     if (savedMode) {
       setMode(savedMode);
+    } else if (prefersDarkMode) {
+      // If no saved preference but system prefers dark mode
+      setMode("dark");
     }
-  }, []);
+  }, [prefersDarkMode]);
 
   /**
    * Toggle between light and dark color modes

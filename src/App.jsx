@@ -40,6 +40,9 @@ function App() {
           secondary: {
             main: "#f50057",
           },
+          background: {
+            ...(actualMode === "light" ? { paper: "#f5f5f5" } : {}),
+          },
         },
       }),
     [actualMode]
